@@ -1,0 +1,22 @@
+{
+  "name": "assigment-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ToDo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ToDo.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github-second:SophyStudent/Assignment-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14"
+  }
+}
