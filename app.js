@@ -7,6 +7,8 @@ app.listen(3000, () => {
 });   
 //in-memory database
 const students = [];
+
+//assign id to student
 function generateid() {
     return students.length + 1
 };
