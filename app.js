@@ -10,18 +10,18 @@ const students = [];
 
 //assign id to student
 function generateid() {
-    return students.length + 1
+    return students.length + 1 //return the length of the students array + 1 as the id
 };
 
 // create a student
 app.post("/student", (req, res) => {
-const studentData = req.body;
+const studentData = req.body; //get the student data from the request body
 const student = {
-    ...studentData,
-    id: generateid()
+    ...studentData, //spread operator to update the student data
+    id: generateid() //call the generateid function to assign an id to the student
 };
-students.push(student);
-res.json(student);
+students.push(student); //push the student to the students array
+res.json(student); //return the student data as a response
 });
 
 // get all students
