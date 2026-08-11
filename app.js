@@ -30,7 +30,7 @@ const newStudents = studentData.map(newstudent => ({
 }));
 
 students.push(...newStudents); //push the new students to the students array
-res.json(newStudents); //return the student data as a response
+res.status(201).json(newStudents); //return the student data as a response
 });
 
 
@@ -46,7 +46,7 @@ if (Number.isNaN(id)) {
 return res.status(400).json("invalid student id");
 }
 const foundstudent = students.find(getstudent => getstudent.id === id);
-if (id === undefined){
+if (foundstudent === undefined){
 return res.status(404).json("student not found");
 }
 
