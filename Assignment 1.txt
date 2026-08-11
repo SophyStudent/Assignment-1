@@ -17,3 +17,38 @@ The application should store data in memory (array) instead of a real database.
 Submit Assignment Here:
 
 https://docs.google.com/forms/d/e/1FAIpQLScW98e3hI1Sg33y7k55OHI91NWratTBRpMWXaYL9diW92j1pg/viewform?usp=header
+
+
+
+
+
+
+
+1. Request arrives with req.body (array of new students)
+   │
+2. .map() starts looping through the array items one by one
+   │
+   ├── Iteration 0: (index = 0)
+   │   │
+   │   ├── JavaScript encounters: id: generateid(0)
+   │   ├── It pauses the map loop and calls generateid(0)
+   │   ├── generateid runs: returns (students.length + 1 + 0)
+   │   └── The returned number is assigned to the `id` property
+   │
+   ├── Iteration 1: (index = 1)
+   │   │
+   │   ├── JavaScript encounters: id: generateid(1)
+   │   ├── It calls generateid(1)
+   │   ├── generateid runs: returns (students.length + 1 + 1)
+   │   └── The returned number is assigned to the `id` property
+   │
+3. .map() finishes and returns the new `newStudents` array
+
+
+let nextId = 1;
+
+function generateId() {
+    const currentId = nextId; // 1. Save current number (1)
+    nextId = nextId + 1;      // 2. Increment counter for next time (2)
+    return currentId;         // 3. Return saved number (1)
+}

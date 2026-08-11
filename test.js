@@ -9,10 +9,9 @@ app.listen(3000, () => {
 const students = [];
 
 //assign id to student
-let nextId= 1;
-function generateId() {
-    return nextId++; //return the length of the students array + 1 as the id
-}
+function generateid(index=0) {
+    return students.length + 1 + index //return the length of the students array + 1 as the id
+};
 
 // create a student
 app.post("/student", (req, res) => {
@@ -24,9 +23,9 @@ const studentData = req.body; //get the student data from the request body
 // };
 
 //bulk object entry
-const newStudents = studentData.map(newstudent => ({
+const newStudents = studentData.map((newstudent, index) => ({
     ...newstudent,
-    id: generateId()
+    id: generateid(index)
 }));
 
 students.push(...newStudents); //push the new students to the students array
