@@ -32,6 +32,13 @@ app.get("/all-students", (req, res) => {
 //get one student by id
 app.get("/student/:id", (req, res) => {
 const id = Number(req.params.id);
+if (Number.isNaN(id)) {
+return res.status(400).json("invalid student id");
+}
 const foundstudent = students.find(getstudent => getstudent.id === id);
+if (id === undefined){
+return res.status(404).json("student not found");
+}
+
 res.json(foundstudent);
 })
