@@ -29,3 +29,9 @@ app.get("/all-students", (req, res) => {
     res.json(students);
 });
 
+//get one student by id
+app.get("/student/:id", (req, res) => {
+const id = Number(req.params.id);
+const foundstudent = students.find(getstudent => getstudent.id === id);
+res.json(foundstudent);
+})
