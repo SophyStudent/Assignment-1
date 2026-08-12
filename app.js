@@ -23,6 +23,25 @@ const studentData = req.body; //get the student data from the request body
 //     id: generateid() //call the generateid function to assign an id to the student
 // };
 
+ // Check 1: body must be an array
+  if (!Array.isArray(studentData)) {
+    return res.status(400).json("Request body must be an array");
+  }
+
+  // Check 2: every student must have the required fields
+  if (!studentData.every(student =>
+    student.Name && 
+    student.Age && 
+    student.Dept && 
+    typeof student.Age === "number" && 
+    student.Age >= 0 &&
+    typeof student.Name === "string" &&
+    typeof student.Dept === "string" &&
+    student.Name.length >= 2 && student.Dept.length >= 2
+  )) {
+    return res.status(400).json("Invalid student data");
+  }
+
 //bulk object entry
 const newStudents = studentData.map(newstudent => ({
     ...newstudent,
