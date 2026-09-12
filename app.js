@@ -14,6 +14,11 @@ function generateId() {
     return nextId++; //return the length of the students array + 1 as the id
 }
 
+
+// ================================================ //
+ // ================================================//
+
+ 
 // create a student
 app.post("/student", (req, res) => {
 const studentData = req.body; //get the student data from the request body
@@ -52,11 +57,9 @@ students.push(...newStudents); //push the new students to the students array
 res.status(201).json(newStudents); //return the student data as a response
 });
 
+// ================================================ //
+ // ================================================//
 
-// get all students
-app.get("/all-students", (req, res) => {
-    res.json(students);
-});
 
 //get one student by id
 app.get("/student/:id", (req, res) => {
@@ -71,3 +74,12 @@ return res.status(404).json("student not found");
 
 res.json(foundstudent);
 })
+
+// ================================================ //
+ // ================================================//
+
+// get all students
+app.get("/all-students", (req, res) => {
+    res.json(students);
+});
+
