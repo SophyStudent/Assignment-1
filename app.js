@@ -63,16 +63,19 @@ res.status(201).json(newStudents); //return the student data as a response
 
 //get one student by id
 app.get("/student/:id", (req, res) => {
-const id = Number(req.params.id);
-if (Number.isNaN(id)) {
-return res.status(400).json("invalid student id");
+const id = Number(req.params.id); //Get ID from URL and convert it to a number
+if (Number.isNaN(id)) { //validate if the id is a number
+return res.status(400).json("invalid student id"); //return a 400 error if the id is not a number
 }
-const foundstudent = students.find(getstudent => getstudent.id === id);
-if (foundstudent === undefined){
-return res.status(404).json("student not found");
+if (id <= 0) {
+    return res.status(400).json("invalid student id");
+}
+const foundstudent = students.find(getstudent => getstudent.id === id); //find the student with the given id
+if (foundstudent === undefined){ //validate if the student is found
+return res.status(404).json("student not found"); //return a 404 error if the student is not found
 }
 
-res.json(foundstudent);
+res.json(foundstudent); //return the student data as a response
 })
 
 // ================================================ //
@@ -80,6 +83,10 @@ res.json(foundstudent);
 
 // get all students
 app.get("/all-students", (req, res) => {
-    res.json(students);
+const foundstudents = students; // receive and read
+res.json(foundstudents); //return all student data as array in json response
 });
+
+// ================================================ //
+ // ================================================//
 
